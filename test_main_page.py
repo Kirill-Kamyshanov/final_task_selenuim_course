@@ -13,6 +13,8 @@ def test_guest_can_go_to_login_page(browser):
     page.open()
     page.go_to_login_page()
     # sleep(3)
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.should_be_login_page()
 
 # @pytest.mark.skip
 def test_guest_should_see_login_link(browser):
@@ -21,7 +23,7 @@ def test_guest_should_see_login_link(browser):
     page.should_be_login_link()
 
 
-def test_3(browser):
+def test_login_page(browser):
     link = "https://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
     page = LoginPage(browser, link)
     page.open()
