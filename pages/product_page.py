@@ -1,7 +1,7 @@
 from pages.base_page import BasePage
 from pages.locators import GoodPageLocators
 
-class GoodPage(BasePage):
+class ProductPage(BasePage):
 
     def add_to_basket(self):
         self.browser.find_element(*GoodPageLocators.ADD_TO_BASKET_BUTTON).click()
