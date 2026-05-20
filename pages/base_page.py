@@ -73,10 +73,12 @@ class BasePage:
         link = self.browser.find_element(*BasePageLocators.BASKET_BUTTON)
         link.click()
 
-    def should_not_be_products_in_basket(self):
+    def should_not_be_products_in_basket(self, language):
         assert self.is_not_element_present(*BasePageLocators.ITEMS_TO_BUY_IN_BASKET) # в корзине нет товаров
         # print(texts.empty_basket_message[request.config.getoption("--language").lower()])
-        assert self.is_element_present(*BasePageLocators.EMPTY_BASKET_MESSAGE) # текст о том что корзина пуста
+        expected_text = texts.empty_basket_message[language]
+        actual_text = self.browser.find_element(*BasePageLocators.EMPTY_BASKET_MESSAGE).text
+        assert actual_text == expected_text, f"Ожидался текст: '{expected_text}', но получен '{actual_text}'"
 
         # проверяется что текст есть, но не проверяется конкретный текст
 

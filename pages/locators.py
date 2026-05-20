@@ -4,7 +4,7 @@ class BasePageLocators:
 
     BASKET_BUTTON = ("xpath", '//a[@class="btn btn-default"]')
     ITEMS_TO_BUY_IN_BASKET = ("css selector", '[class="col-sm-6 h3"]')
-    EMPTY_BASKET_MESSAGE = ("css selector", '#content_inner p')
+    EMPTY_BASKET_MESSAGE = ("css selector", '#content_inner')
 
 class MainPageLocators:
     LOGIN_LINK = ("css selector", "#login_link")
