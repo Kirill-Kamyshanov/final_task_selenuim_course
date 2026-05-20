@@ -30,3 +30,13 @@ def test_login_page(browser):
     sleep(2)
     page.should_be_login_page()
 
+
+@pytest.mark.need_review
+def  test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    page = LoginPage(browser, link)
+    page.open()
+    page.go_to_basket_page()
+    page.should_not_be_products_in_basket()
+
+
+
