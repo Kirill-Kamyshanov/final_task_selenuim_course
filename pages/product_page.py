@@ -17,3 +17,7 @@ class GoodPage(BasePage):
         assert self.good_price == self.browser.find_element(*GoodPageLocators.RESULT_PRICE).text, (
             "Цена в окне после добавления товара не совпадает с ожидаемой"
         )
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*GoodPageLocators.RESULT_MESSAGE), \
+            "Сообщение об успехе отображается, но не должно"
