@@ -3,7 +3,9 @@ from pages.locators import GoodPageLocators
 
 class ProductPage(BasePage):
 
+
     def add_to_basket(self):
+        """Добавление товара в корзину"""
         self.browser.find_element(*GoodPageLocators.ADD_TO_BASKET_BUTTON).click()
         self.solve_quiz_and_get_code()
         self.good_name = self.browser.find_element(*GoodPageLocators.GOOD_NAME).text

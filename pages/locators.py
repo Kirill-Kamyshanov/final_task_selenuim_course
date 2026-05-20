@@ -7,6 +7,7 @@ class BasePageLocators:
     ITEMS_TO_BUY_IN_BASKET = ("css selector", '[class="col-sm-6 h3"]')
     EMPTY_BASKET_MESSAGE = ("css selector", '#content_inner')
 
+
 class MainPageLocators:
     LOGIN_LINK = ("css selector", "#login_link")
 
@@ -19,7 +20,6 @@ class LoginPageLocators:
     PASSWORD_FIELD = ("css selector", "#id_registration-password1")
     CONFIRM_PASSWORD_FIELD = ("css selector", "#id_registration-password2")
     REGISTER_BUTTON = ("css selector", '[name="registration_submit"]')
-
 
 
 class GoodPageLocators:

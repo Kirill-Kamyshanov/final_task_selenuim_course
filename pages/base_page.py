@@ -1,6 +1,5 @@
 import math
 
-import pytest
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,10 +8,9 @@ from pages.locators import BasePageLocators
 from pages.texts import texts
 
 class BasePage:
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, url):
         self.browser = browser
         self.url = url
-        # self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
@@ -77,11 +75,8 @@ class BasePage:
         link.click()
 
     def should_not_be_products_in_basket(self, language):
-        assert self.is_not_element_present(*BasePageLocators.ITEMS_TO_BUY_IN_BASKET) # в корзине нет товаров
-        # print(texts.empty_basket_message[request.config.getoption("--language").lower()])
+        assert self.is_not_element_present(*BasePageLocators.ITEMS_TO_BUY_IN_BASKET)
         expected_text = texts.empty_basket_message[language]
         actual_text = self.browser.find_element(*BasePageLocators.EMPTY_BASKET_MESSAGE).text
         assert actual_text == expected_text, f"Ожидался текст: '{expected_text}', но получен '{actual_text}'"
-
-        # проверяется что текст есть, но не проверяется конкретный текст
 
