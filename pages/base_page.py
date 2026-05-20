@@ -1,7 +1,8 @@
 import math
 
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
-
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
     def __init__(self, browser, url, timeout=10):
@@ -33,3 +34,27 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+
+
+    def is_not_element_present(self, how, what, timeout=4):
+        """Проверка того, что элемент не появляется на странице в течение заданного времени"""
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        """Проверка того, что элемент исчезает со страницы"""
+        try:
+            WebDriverWait(self.browser, timeout, 1, (TimeoutException,)). \
+                until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return False
+
+        return True
+
+
+    # Метод-проверка в классе про страницу товара будет выглядеть аналогично should_not_be_success_message
