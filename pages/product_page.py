@@ -21,3 +21,7 @@ class GoodPage(BasePage):
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*GoodPageLocators.RESULT_MESSAGE), \
             "Сообщение об успехе отображается, но не должно"
+
+    def should_dissapear_of_success_message(self):
+        assert self.is_disappeared(*GoodPageLocators.RESULT_MESSAGE), \
+            "Сообщение об успехе не пропадает"
