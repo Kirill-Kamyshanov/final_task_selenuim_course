@@ -1,6 +1,7 @@
 class BasePageLocators:
     LOGIN_LINK = ("css selector", "#login_link")
     LOGIN_LINK_INVALID = ("css selector", "#login_link_inc")
+    USER_ICON = ("css selector", ".icon-user")
 
     BASKET_BUTTON = ("xpath", '//a[@class="btn btn-default"]')
     ITEMS_TO_BUY_IN_BASKET = ("css selector", '[class="col-sm-6 h3"]')
@@ -13,6 +14,12 @@ class MainPageLocators:
 class LoginPageLocators:
     LOGIN_FORM = ("css selector", "form#login_form")
     REGISTER_FORM = ("css selector", "form#register_form")
+
+    EMAIL_ADDRESS_FIELD = ("css selector", "#id_registration-email")
+    PASSWORD_FIELD = ("css selector", "#id_registration-password1")
+    CONFIRM_PASSWORD_FIELD = ("css selector", "#id_registration-password2")
+    REGISTER_BUTTON = ("css selector", '[name="registration_submit"]')
+
 
 
 class GoodPageLocators:
